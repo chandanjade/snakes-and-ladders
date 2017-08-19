@@ -15,7 +15,7 @@ public class Main {
                 new Player("Jack"),
                 new Player("Jill")
         };
-        Game game = new Game(players, 5, 5);
+        Game game = new Game(players, 5, 10);
 
         int turn = 0;
         System.out.println(game);

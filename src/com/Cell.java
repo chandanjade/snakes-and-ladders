@@ -1,13 +1,11 @@
 package com;
 
 public class Cell {
-    public final int row;
-    public final int col;
+    public final int value;
     public Cell next;
 
-    public Cell(int row, int col) {
-        this.row = row;
-        this.col = col;
+    public Cell(int value) {
+        this.value = value;
     }
 
     public void pointsTo(Cell cell) {

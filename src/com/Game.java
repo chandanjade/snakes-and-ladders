@@ -22,23 +22,25 @@ public class Game {
     private void initPlayersPositions() {
         this.playersPosition = new Cell[players.length];
         for (int i = 0; i < players.length; i++) {
-            playersPosition[i] = new Cell(0, 0);
+            playersPosition[i] = new Cell(1);
         }
+    }
+
+    public int play(int playerId, Dice dice) {
+        System.out.println(dice);
+        if(playersPosition[playerId].value + dice.getFaceValue() > board.size()) return playerId;
+        playersPosition[playerId] = board.nextCell(playersPosition[playerId], dice.getFaceValue());
+        System.out.println(printPlayersPositions());
+        if(playersPosition[playerId].value + dice.getFaceValue() > board.size()) return playerId;
+        return -1;
     }
 
     private String printPlayersPositions() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < players.length; i++) {
-            sb.append(players[i].name + " at " + board.cellValue(playersPosition[i]) + "\n");
+            sb.append(players[i].name + " at " + playersPosition[i].value + "\n");
         }
         return sb.toString();
-    }
-
-    public int play(int playerId, Dice dice) {
-        System.out.println(dice);
-        playersPosition[playerId] = board.nextCell(playersPosition[playerId], dice.getFaceValue());
-        System.out.println(printPlayersPositions());
-        return -1;
     }
 
     @Override
