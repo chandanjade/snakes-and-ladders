@@ -42,11 +42,14 @@ public class Board {
         }
     }
 
-    public Cell nextCell(Cell current, int score) {
+    public Cell movePlayer(Player p, Cell current, int score) {
         int nextValue = current.value + score;
         if(nextValue >= size()) throw new IllegalStateException("No cell available for " + nextValue + ", Board size is " + size());
         Cell next = cells[nextValue-1];
+        System.out.println(p + " moves from " + current + " to " + next);
         while (next.next != null) {
+            String snakeOrLadder = next.next.value > next.value ? "Yo! there is a ladder." : "Oops, you hit the snake!";
+            System.out.println(snakeOrLadder + " " + p + " moves from " + next + " to " + next.next);
             next = next.next;
         }
         return next;

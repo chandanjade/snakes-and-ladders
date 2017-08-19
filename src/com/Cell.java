@@ -11,4 +11,9 @@ public class Cell {
     public void pointsTo(Cell cell) {
         next = cell;
     }
+
+    @Override
+    public String toString() {
+        return "" + value;
+    }
 }
