@@ -1,6 +1,7 @@
 package com;
 
 
+
 public class Game {
     private Board board;
     private Player[] players;
@@ -13,6 +14,7 @@ public class Game {
     }
 
     public Game(Player[] players, int rows, int cols) {
+        if(players.length == 0) throw new IllegalArgumentException("There is no fun creating the game if there is no one to play!");
         this.players = players;
         initPlayersPositions();
         this.board = new Board(rows, cols);
