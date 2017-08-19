@@ -37,9 +37,22 @@ public class Board {
         for(int i = size() - 2; i > 1; i--) {
             int randomInt = random.nextInt(Integer.MAX_VALUE) % (i-1) + 1;
             if(randomInt % 2 == 0) {
-                cells[i].pointsTo(cells[i- randomInt]);
+                if(doesNotCreateCycle(cells[i], cells[i-randomInt])) {
+                    cells[i].pointsTo(cells[i- randomInt]);
+                }
             }
         }
+    }
+
+    private boolean doesNotCreateCycle(Cell src, Cell next) {
+        Cell t = next;
+        while (t != null) {
+            if (t.equals(src)) {
+                return false;
+            }
+            t = t.next;
+        }
+        return true;
     }
 
     public Cell movePlayer(Player p, Cell current, int score) {
