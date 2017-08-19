@@ -8,6 +8,7 @@ public class Game {
     private Cell[] playersPosition;
 
     public Game(Player[] players) {
+        if(players.length == 0) throw new IllegalArgumentException("There is no fun creating the game if there is no one to play!");
         this.players = players;
         initPlayersPositions();
         this.board = new Board(10, 10);
@@ -15,6 +16,7 @@ public class Game {
 
     public Game(Player[] players, int rows, int cols) {
         if(players.length == 0) throw new IllegalArgumentException("There is no fun creating the game if there is no one to play!");
+        if(rows == 0 || cols == 0) throw new IllegalArgumentException("Can not create board with that dimensions " + rows + "X" + cols);
         this.players = players;
         initPlayersPositions();
         this.board = new Board(rows, cols);
