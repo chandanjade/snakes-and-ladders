@@ -58,7 +58,7 @@ public class Board {
             String type = cell.next.value > cell.value ? " #" : "\uD83D\uDC0D ";
             link = String.format(type + "%3d", cell.next.value);
         }
-        return String.format("|" + link + "%3d|", cell.value);
+        return String.format("|" + link + "%3d ", cell.value);
     }
 
     @Override
@@ -66,17 +66,20 @@ public class Board {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                sb.append("+--------+");
+                sb.append("+---------");
             }
+            sb.append("+");
             sb.append("\n");
             for (int j = 0; j < cols; j++) {
                 sb.append(printCell(cells[i * cols + j]));
             }
+            sb.append("|");
             sb.append("\n");
         }
         for (int j = 0; j < cols; j++) {
-            sb.append("+--------+");
+            sb.append("+---------");
         }
+        sb.append("+");
         return sb.toString();
     }
 }
