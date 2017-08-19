@@ -17,7 +17,7 @@ public class Main {
         };
         Game game = new Game(players, 5, 10);
 
-        int turn = 0;
+        int turn = 0, turnsCount = 0;
         System.out.println(game);
         int winnerId = -1;
         while (winnerId == -1) {
@@ -25,7 +25,9 @@ public class Main {
             in.nextLine();
             winnerId = game.play(turn, Dice.roll());
             turn = (turn + 1) % players.length;
+            turnsCount++;
         }
         System.out.println("Yo! " + players[winnerId] + " won this round!");
+        System.out.println("It took " + (turnsCount+1)/2 + " turns to conclude the game");
     }
 }
