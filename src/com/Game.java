@@ -28,7 +28,7 @@ public class Game {
 
     public int play(int playerId, Dice dice) {
         System.out.println(dice);
-        if(playersPosition[playerId].value + dice.getFaceValue() > board.size()) return playerId;
+        if(playersPosition[playerId].value + dice.getFaceValue() >= board.size()) return playerId;
         playersPosition[playerId] = board.movePlayer(players[playerId], playersPosition[playerId], dice.getFaceValue());
         System.out.println(this);
         if(playersPosition[playerId].value >= board.size()) return playerId;
